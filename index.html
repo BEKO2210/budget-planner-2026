@@ -653,18 +653,256 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* MOBILE HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                flex-direction: column;
+                background: var(--bg-surface);
+                padding: 5rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border-gold);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+        }
+
+        /* DONATION SECTION */
+        .donation-section {
+            padding: 6rem 5%;
+            background: var(--bg-surface);
+        }
+
+        .donation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .donation-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .donation-container h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-container > p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .donation-presets {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            min-width: 70px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-gold);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .donation-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .donation-btn.active {
+            background: var(--gold);
+            color: var(--bg-primary);
+            border-color: var(--gold);
+        }
+
+        .donation-custom {
+            margin-bottom: 2rem;
+        }
+
+        .donation-custom label {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .custom-input-wrapper {
+            display: flex;
+            align-items: center;
+            max-width: 200px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .custom-input-wrapper:focus-within {
+            border-color: var(--gold);
+        }
+
+        .currency-symbol {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.125rem;
+            color: var(--gold);
+            padding: 0.75rem 0 0.75rem 1rem;
+        }
+
+        .custom-input-wrapper input {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.125rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            padding: 0.75rem;
+            width: 100%;
+            outline: none;
+            -moz-appearance: textfield;
+        }
+
+        .custom-input-wrapper input::-webkit-outer-spin-button,
+        .custom-input-wrapper input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .donation-submit {
+            display: inline-block;
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .donation-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .donation-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .donation-presets {
+                gap: 0.5rem;
+            }
+
+            .donation-btn {
+                padding: 0.625rem 1rem;
+                font-size: 0.9rem;
+                min-width: 60px;
+            }
+
+            .donation-submit {
+                width: 100%;
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* OVERLAY for mobile menu */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .nav-overlay.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <!-- NAVIGATION -->
     <nav>
         <div class="logo">Finance Suite</div>
-        <ul class="nav-links">
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#products">Products</a></li>
             <li><a href="#bundle">Bundle</a></li>
+            <li><a href="#donate">Support</a></li>
             <li><a href="#download">Download</a></li>
         </ul>
         <button class="nav-cta" onclick="document.getElementById('bundle').scrollIntoView({behavior: 'smooth'})">Get It Free</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- HERO -->
@@ -674,7 +912,7 @@
             <p class="hero-subline">Take control of your money with precision-crafted Excel and Google Sheets templates. No fluff, just results.</p>
             <div class="hero-ctas">
                 <button class="cta-ghost" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Start Free</button>
-                <button class="cta-gold" onclick="document.getElementById('bundle').scrollIntoView({behavior: 'smooth'})">Get Full Bundle — 0 EUR (Limited)</button>
+                <button class="cta-gold" onclick="document.getElementById('bundle').scrollIntoView({behavior: 'smooth'})">Get Full Bundle — $0 (Limited)</button>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -686,7 +924,7 @@
                     <div class="stat-label">Rating</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">EUR 0</div>
+                    <div class="stat-value">$0</div>
                     <div class="stat-label">to start</div>
                 </div>
             </div>
@@ -733,19 +971,19 @@
             <article class="product-card" data-animate>
                 <div class="product-number">01</div>
                 <h3>Annual Budget Planner</h3>
-                <p>Complete 12-month financial overview financial overview with automatic calculations and category tracking.</p>
+                <p>Complete 12-month financial overview with automatic calculations and category tracking.</p>
                 <a href="https://github.com/BEKO2210/budget-planner-2026/raw/main/asset/Annual-Budget-Planner-2026.xlsx" download>Download →</a>
             </article>
             <article class="product-card" data-animate>
                 <div class="product-number">02</div>
                 <h3>Debt Payoff Tracker</h3>
-                <p>Strategic debt elimination plan elimination plan with payoff timelines and interest savings calculator.</p>
+                <p>Strategic debt elimination plan with payoff timelines and interest savings calculator.</p>
                 <a href="https://github.com/BEKO2210/budget-planner-2026/raw/main/asset/Debt-Payoff-Tracker.xlsx" download>Download →</a>
             </article>
             <article class="product-card" data-animate>
                 <div class="product-number">03</div>
                 <h3>Savings Goal Tracker</h3>
-                <p>Visual progress tracking tracking for any savings goal with milestone celebrations.</p>
+                <p>Visual progress tracking for any savings goal with milestone celebrations.</p>
                 <a href="https://github.com/BEKO2210/budget-planner-2026/raw/main/asset/Savings-Goal-Tracker.xlsx" download>Download →</a>
             </article>
             <article class="product-card" data-animate>
@@ -775,7 +1013,7 @@
                 <div class="step-number">01</div>
                 <div class="step-content">
                     <h3>Download Instantly</h3>
-                    <p>Get your templates immediately after checkout immediately after checkout. No waiting, no shipping.</p>
+                    <p>Get your templates immediately after checkout. No waiting, no shipping.</p>
                 </div>
                 <div class="step-visual">
                     <div class="spreadsheet-grid">
@@ -794,7 +1032,7 @@
                 <div class="step-number">02</div>
                 <div class="step-content">
                     <h3>Open in Your App</h3>
-                    <p>Works with Excel, Google Sheets, LibreOffice, Google Sheets, LibreOffice. No installation required.</p>
+                    <p>Works with Excel, Google Sheets, and LibreOffice. No installation required.</p>
                 </div>
                 <div class="step-visual">
                     <div class="spreadsheet-grid">
@@ -813,7 +1051,7 @@
                 <div class="step-number">03</div>
                 <div class="step-content">
                     <h3>Enter Your Data</h3>
-                    <p>Fill in your numbers and watch the magic happen and watch the automatic calculations do the work.</p>
+                    <p>Fill in your numbers and watch the automatic calculations do the work.</p>
                 </div>
                 <div class="step-visual">
                     <div class="spreadsheet-grid">
@@ -846,7 +1084,7 @@
                 <cite class="quote-author">— S.L., Freelance Designer</cite>
             </blockquote>
             <blockquote class="quote" data-animate>
-                <p class="quote-text">"The debt tracker alone helped me eliminate 12,000 EUR in 8 months. Life changing."</p>
+                <p class="quote-text">"The debt tracker alone helped me eliminate $12,000 in 8 months. Life changing."</p>
                 <cite class="quote-author">— T.B., Project Manager</cite>
             </blockquote>
         </div>
@@ -864,11 +1102,36 @@
                 <li>Lifetime updates included</li>
             </ul>
             <div class="bundle-price">
-                <span class="price-original">EUR 27,96</span>
+                <span class="price-original">$27.96</span>
                 <span class="price-current">FREE</span>
             </div>
             <a href="https://github.com/BEKO2210/budget-planner-2026/raw/main/asset/Budget-Planner-2026.zip" class="cta-gold" download>Get It Free</a>
             <p class="fine-print">Instant download after purchase. Compatible with Excel, Google Sheets, LibreOffice.</p>
+        </div>
+    </section>
+
+    <!-- DONATION / BUY ME A COFFEE -->
+    <section class="donation-section" id="donate">
+        <div class="donation-container" data-animate>
+            <div class="donation-icon">&#9749;</div>
+            <h2>Buy Me a Coffee</h2>
+            <p>If you enjoy these free templates, consider supporting my work!</p>
+            <div class="donation-presets">
+                <button class="donation-btn" data-amount="2">$2</button>
+                <button class="donation-btn active" data-amount="5">$5</button>
+                <button class="donation-btn" data-amount="10">$10</button>
+                <button class="donation-btn" data-amount="15">$15</button>
+                <button class="donation-btn" data-amount="20">$20</button>
+            </div>
+            <div class="donation-custom">
+                <label for="custom-amount">Or enter a custom amount:</label>
+                <div class="custom-input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="custom-amount" min="1" max="1000" step="1" placeholder="0">
+                </div>
+            </div>
+            <button class="cta-gold donation-submit" id="donate-btn">&#9749; Donate via PayPal</button>
+            <p class="fine-print">Payments are securely processed via PayPal.</p>
         </div>
     </section>
 
@@ -932,6 +1195,68 @@
 
         document.querySelectorAll('[data-count]').forEach(el => {
             statsObserver.observe(el);
+        });
+
+        // Mobile hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navOverlay = document.getElementById('nav-overlay');
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            navOverlay.classList.remove('active');
+        }
+
+        hamburger.addEventListener('click', function () {
+            const isOpen = navLinks.classList.contains('open');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                hamburger.classList.add('active');
+                navLinks.classList.add('open');
+                navOverlay.classList.add('active');
+            }
+        });
+
+        navOverlay.addEventListener('click', closeMenu);
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Donation functionality
+        let selectedAmount = 5;
+
+        document.querySelectorAll('.donation-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.donation-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedAmount = parseFloat(this.dataset.amount);
+                document.getElementById('custom-amount').value = '';
+            });
+        });
+
+        document.getElementById('custom-amount').addEventListener('input', function () {
+            if (this.value) {
+                document.querySelectorAll('.donation-btn').forEach(b => b.classList.remove('active'));
+                selectedAmount = parseFloat(this.value);
+            } else {
+                selectedAmount = 0;
+            }
+        });
+
+        document.getElementById('donate-btn').addEventListener('click', function () {
+            if (selectedAmount > 0) {
+                var email = 'renateweinfurtner@gmx.de';
+                var paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations'
+                    + '&business=' + encodeURIComponent(email)
+                    + '&item_name=' + encodeURIComponent('Support Finance Suite')
+                    + '&amount=' + selectedAmount
+                    + '&currency_code=USD'
+                    + '&no_shipping=1';
+                window.open(paypalUrl, '_blank');
+            }
         });
     </script>
 </body>
